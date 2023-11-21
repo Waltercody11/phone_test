@@ -302,7 +302,7 @@ function call(){
                     var pickup = new Audio('phone-pick-up-1.mp3');
                     pickup.play();
                     speakWord("Hello? Did you pay for this call? No? Okay... here is the secret flag");
-                    displayFlag("pwn.college{secret_flag}");
+                    displayFlag("\flag");
                 }else if (phoneInput.value ==="13113990001") {
                     var greet = new Audio('greetings.mp3');
                     greet.play();
