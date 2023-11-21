@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Audio Analysis</title>
+        <link rel="stylesheet" type="text/css" href="background.css">
+        <div id="validationFlag"></div>  
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+    
+            .phone-pad {
+                max-width: 300px;
+                margin: 0 auto;
+                text-align: center;
+            }
+    
+            .pad-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 10px;
+                margin-top: 20px;
+            }
+    
+            .digit-button {
+                width: 80px;
+                height: 80px;
+                font-size: 24px;
+                background-color: #000000;
+                border: 1px solid #5eff00;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+    
+            .digit-button:hover {
+                background-color: #1eff00;
+            }
+            .empty-button {
+                width: 20px; 
+                background-color: transparent; 
+                border: none; 
+                cursor: none;
+                pointer-events: none; 
+            }
+            #phone-input {
+                width: 240px;
+                padding: 10px;
+                font-size: 18px;
+            }
+        </style>  
+    </head>
+    
+<body>
+    
+    <p>This is a Phone Phreaking challenge.</p>
+    <p>You are based in the 480 area code and want to make a call to 1-337-313-1337 but you dont want to pay for it. Good luck!</p>
+    <p id="flag-display">Flag: <span id="flag">--</span></p>
+    <p>Frequency: <span id="currentFrequency">-- Hz</span></p>
+
+    <div id="frequencyGraphContainer">
+            <canvas id="frequencyGraph" width="300" height="100"></canvas>
+        </div>
+    <div class="phone-pad">
+        <input type="text" id="phone-input" placeholder="Enter 11-digit phone number" readonly>
+        <div class="pad-grid">
+            <button class="digit-button" onclick="appendDigit(1)">1</button>
+            <button class="digit-button" onclick="appendDigit(2)">2</button>
+            <button class="digit-button" onclick="appendDigit(3)">3</button>
+            <button class="digit-button" onclick="appendDigit(4)">4</button>
+            <button class="digit-button" onclick="appendDigit(5)">5</button>
+            <button class="digit-button" onclick="appendDigit(6)">6</button>
+            <button class="digit-button" onclick="appendDigit(7)">7</button>
+            <button class="digit-button" onclick="appendDigit(8)">8</button>
+            <button class="digit-button" onclick="appendDigit(9)">9</button>
+            <button class="digit-button" onclick="playStar()">*</button>
+            <button class="digit-button" onclick="appendDigit(0)">0</button>
+            <button class="digit-button" onclick="playHash()">#</button>
+
+            <img src="answer-modified.png" alt="Answer" id="answer-button" width="80" height = "80" onclick="call()">
+            
+            <button class="digit-button empty-button"></button>
+            <img src="hangup-modified.png" alt="Hangup" id="hangup-button" width="80" height = "80"  onclick="clearPhoneNumber()">
+        </div>
+        
+        
+    </div>
+    <div id="detector"></div>
+    <p><span id="frequency"></span></p>
+    <audio id="dtmfAudio" style="display: none;"></audio>
+
+    <script src="phreak.js"></script>
+</body>
+</html>
