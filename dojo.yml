@@ -1,0 +1,8 @@
+id: example
+name: Example Dojo
+type: example
+award:
+  emoji: 😀
+modules:
+  - id: hello
+  - id: world
