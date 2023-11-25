@@ -3,4 +3,4 @@ name: Phone Phreaking
 
 
 modules:
-  - id: Phreaking
+  - id: phreaking
